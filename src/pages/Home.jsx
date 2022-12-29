@@ -1,10 +1,15 @@
-import StarshipsList from "../components/StarshipsList"
+
+import { Starships } from "../components/Starships"
+
 
 
 function Home() {
 
     return (
-    <StarshipsList />
+    <>
+    
+    <Starships />
+    </>
   )
 }
 

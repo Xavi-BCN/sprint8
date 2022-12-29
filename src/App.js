@@ -1,12 +1,24 @@
-import './App.css';
+//Provider
+import { StarshipsContextProvider } from './context/StarshipsContext';
+
+//Componets
+import Header from "./components/Header"
 import Home from './pages/Home';
 
-function App() {
+//Deps
+import './App.css';
+
+export const App = () => {
+  
   return (
     <div className="App">
-     <Home />
+      
+      <StarshipsContextProvider>
+        <Header />
+        <Home />
+      </StarshipsContextProvider>
     </div>
   );
 }
 
-export default App;
+
