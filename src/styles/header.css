@@ -1,9 +1,11 @@
 .container{
     height: 150px;
     background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 img{
     width: 20%;
-    
 }
