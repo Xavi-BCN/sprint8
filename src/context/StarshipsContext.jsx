@@ -45,15 +45,11 @@ export const StarshipsContextProvider = ( { children } ) => {
     }
 
     
-    const getShip = (url) => {
-          Axios.get(`${url}`)
-        .then(response => {
-            if (response.status === 200){
-                const { results } = response.data
-                 console.log(response.data)
-                setNau(results)
-            }
-        })
+    const getShip = async (url) => {
+        let peticion = await Axios.get(`${url}`)
+        console.log(peticion.data)
+        peticion = peticion.data
+        setNau(peticion) 
     }
     
     
@@ -63,6 +59,7 @@ export const StarshipsContextProvider = ( { children } ) => {
             starships,
             setUrlShip,
             setNau,
+            nau,
             urlShip,
             totalResults,
             pages,
@@ -70,8 +67,7 @@ export const StarshipsContextProvider = ( { children } ) => {
             prevPage,
             nextPage,
             gotopage,
-            getShip,
-            nau
+            getShip
         }}>
             {children}
         </StarshipsContext.Provider>
