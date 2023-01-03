@@ -3,20 +3,31 @@ import { StarshipsContextProvider } from './context/StarshipsContext';
 
 //Componets
 import Header from "./components/Header"
-import Home from './pages/Home';
+import Wellcome from './pages/Wellcome';
+import SingleShip from './components/SingleShip';
+import { Starships } from './components/Starships';
+// import Home from './pages/Home';
 
 //Deps
 import './App.css';
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
 export const App = () => {
   
   return (
     <div className="App">
-      
-      <StarshipsContextProvider>
+      <BrowserRouter>
         <Header />
-        <Home />
-      </StarshipsContextProvider>
+        <Routes>
+          <Route path='/' element={<Wellcome />} />
+          <Route path='/Starships/' element={<Starships />} />
+          <Route path='/Singleship/' element={<SingleShip />} />
+        </Routes>
+      </BrowserRouter>
+        <StarshipsContextProvider>
+          
+          {/* <Home /> */}
+        </StarshipsContextProvider>
     </div>
   );
 }

@@ -11,6 +11,8 @@ export const StarshipsContextProvider = ( { children } ) => {
     const [actualPage, setActualPage] = useState(1);
     const [prevPage, setPrevPage] = useState(null);
     const [nextPage, setNextPage] = useState(null);
+    const [nau, setNau] = useState({});
+    const [urlShip, setUrlShip] = useState("");
 
 
 
@@ -34,24 +36,42 @@ export const StarshipsContextProvider = ( { children } ) => {
         .then(response => {
             if (response.status === 200){
                 const { results } = response.data
-                console.log(response.data)
+                // console.log(response.data)
                 setStarships(results);
                 setPrevPage(response.data.previous);
                 setNextPage(response.data.next);
             }
         })
     }
+
+    
+    const getShip = (url) => {
+          Axios.get(`${url}`)
+        .then(response => {
+            if (response.status === 200){
+                const { results } = response.data
+                 console.log(response.data)
+                setNau(results)
+            }
+        })
+    }
+    
     
 
     return (
         <StarshipsContext.Provider value={{
             starships,
+            setUrlShip,
+            setNau,
+            urlShip,
             totalResults,
             pages,
             actualPage,
             prevPage,
             nextPage,
-            gotopage
+            gotopage,
+            getShip,
+            nau
         }}>
             {children}
         </StarshipsContext.Provider>
