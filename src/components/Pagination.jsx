@@ -17,15 +17,6 @@ export const Pagination = () => {
                 Page {actualPage} of {pages}:
             </div>
 
-           {/*  <div className="col-3 d-flex aling-items-center">
-                <b>Go to page:</b>
-                <select name="goto">
-                    <select className="form-select w-auto mx-1">
-                        <option value="1">Uno</option>
-                    </select>
-                </select>
-            </div> */}
-
             <div className="col-3">
                 {prevPage && <button onClick={() => gotopage(prevPage)} className="btn btn-success mx-2 ">Prev</button>}
                 {nextPage && <button onClick={() => gotopage(nextPage)} className="btn btn-success">Next</button>}

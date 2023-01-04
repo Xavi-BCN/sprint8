@@ -36,7 +36,9 @@ export const StarshipsContextProvider = ( { children } ) => {
         .then(response => {
             if (response.status === 200){
                 const { results } = response.data
-                // console.log(response.data)
+                console.log(page)
+                console.log(page.length)
+                setActualPage(page.charAt(38))
                 setStarships(results);
                 setPrevPage(response.data.previous);
                 setNextPage(response.data.next);

@@ -20,7 +20,6 @@ const SingleShip = () => {
   let baseUrlImg = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`
 
   
-  // style={{ backgroundColor: 'black' }}
   return (
     <>
       <div style={{ backgroundColor: 'black' }} className="col12 col-md-8 mx-auto mb-5 text-white" >
