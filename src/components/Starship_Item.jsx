@@ -1,7 +1,7 @@
 // Deps
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
-//  import '../styles/starships.css'
+import '../styles/starships.css'
 
 // Context
 import { StarshipsContext } from '../context/StarshipsContext'
@@ -10,13 +10,13 @@ const Starship_Item = ({ model, name, url }) => {
   const { setUrlShip } = useContext(StarshipsContext)
   
   return (
-    <Link to={"/Singleship"} onClick={() => setUrlShip(url)}>
+    <Link to={"/Singleship"} style={{ textDecoration: 'none'}} onClick={() => setUrlShip(url)}>
     <div className="col12 col-md-8 mx-auto" key={name}>
       <div className="card mt-2">
         <div className="card-body">
-          <h5 className="card-title">{name}</h5>
+          <h5 className="card-title" style={{ textTransform: 'uppercase'}}>{name}</h5>
           <p className="card-text">{model}</p>
-          <p className="card-text">{url}</p>
+          {/* <p className="card-text">{url}</p> */}
         </div>
       </div>
     </div>

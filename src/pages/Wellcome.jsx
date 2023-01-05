@@ -46,48 +46,6 @@ const Wellcome = () => {
   </button>
 </div>
 
-
-
-
-
-
-
-   {/*  <div
-        id="carouselExampleInterval"
-        className="carousel slide"
-        data-bs-ride="carousel"
-    >
-  <div className="carousel-inner">
-    <div className="carousel-item active" data-bs-interval={3000}>
-      <img src="https://lumiere-a.akamaihd.net/v1/images/ep4_ilm_233_c9ad1a7e.jpeg" className="img-fluid d-block w-auto" alt="img1" />
-    </div>
-    <div className="carousel-item" data-bs-interval={3000}>
-      <img src="https://lumiere-a.akamaihd.net/v1/images/ep4_ilm_169_ad7be5fe.jpeg" className="img-fluid d-block w-auto" alt="img2" />
-    </div>
-    <div className="carousel-item"data-bs-interval={3000}>
-      <img src="https://lumiere-a.akamaihd.net/v1/images/ep4_ilm_167_9976ed61.jpeg" className="img-fluid d-block w-auto" alt="img3" />
-    </div>
-  </div>
-  <button
-    className="carousel-control-prev"
-    type="button"
-    data-bs-target="#carouselExampleInterval"
-    data-bs-slide="prev"
-  >
-    <span className="carousel-control-prev-icon" aria-hidden="true" />
-    <span className="visually-hidden">Previous</span>
-  </button>
-  <button
-    className="carousel-control-next"
-    type="button"
-    data-bs-target="#carouselExampleInterval"
-    data-bs-slide="next"
-  >
-    <span className="carousel-control-next-icon" aria-hidden="true" />
-    <span className="visually-hidden">Next</span>
-  </button>
-</div> */}
-
     </>
   )
 }
