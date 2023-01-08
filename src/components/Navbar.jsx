@@ -5,7 +5,7 @@ export const Navbar = () => {
     return (
         <ul className="nav nav-tabs center">
             <li className="nav-item">
-            <Link to={"/"} className="nav-link" style={{ color: 'white' }} >HOME</Link>
+            <Link to={"/Wellcome"} className="nav-link" style={{ color: 'white' }} >HOME</Link>
             </li>
             <li className="nav-item">
                 <Link to={"/Starships"} className="nav-link" style={{ color: 'white' }}>STARSHIPS</Link>

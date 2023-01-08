@@ -19,9 +19,10 @@ export const App = () => {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path='/' element={<Wellcome />} />
-          <Route path='/Starships/' element={<Starships />} />
-          <Route path='/Singleship/' element={<SingleShip />} />
+          <Route index element={<Wellcome />} />
+          <Route path='/Wellcome' element={<Wellcome />} />
+          <Route path='/Starships' element={<Starships />} />
+          <Route path='/Singleship' element={<SingleShip />} />
         </Routes>
       </BrowserRouter>
         <StarshipsContextProvider>

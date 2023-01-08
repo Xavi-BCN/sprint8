@@ -1,4 +1,5 @@
 // Deps
+import { Navigate } from 'react-router-dom'
 import { useContext } from 'react'
 import '../styles/starships.css'
 import ReactHowler from "react-howler"
@@ -12,12 +13,16 @@ import { Pagination } from './Pagination'
 import  Starship_Item  from './Starship_Item'
 
 export const Starships = () => {
-  const { starships } = useContext(StarshipsContext)
+  const { starships, user } = useContext(StarshipsContext)
+
+  if(!user){
+    return <Navigate to='/Wellcome'/>
+  }
  
 
   return (
     <div className="row">
-      <ReactHowler src={imperialSong} playing={true} />
+      <ReactHowler src={imperialSong} playing={false} />
       <Pagination />
       {
         starships.map((item, index) => {
