@@ -2,33 +2,38 @@ import loginlogos from '../assets/img/login-logos.jpg'
 // Deps
 import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-
 // Context
 import { StarshipsContext } from '../context/StarshipsContext'
-
 
 const Login = () => {
 
 	const { setUser } = useContext(StarshipsContext)
 	const { register, formState:{errors}, handleSubmit } = useForm();
 
-	const loginUser = (data,event) => {
-		event.preventDefault();
-
-		console.log('Is prevent-able?', event.cancelable);
+	const loginUser = (data) => {
+		// e.preventDefault();
+		// e.stopPropagation();
+		// console.log(e);
+		// console.log('Is prevent-able?', e.cancelable);
 		localStorage.setItem("user", JSON.stringify(data))
 		setUser(data)
-		
+    closeModal()
 	}
-
   
+  function closeModal(){
+    // const myModal = new bootstrap.Modal('#staticBackdrop')
+    //const myModal = bootstrap.Modal.getOrCreateInstance('#staticBackdrop')
+    const myModal = document.getElementById('staticBackdrop')
+    myModal.style.display = "none"
+    //myModal.hide();
+    // window.close()
+    }
+
     return (
-        <>
-       
-			  {/* Button trigger modal */}
+        <>   
         <button
             type="button"
-            className="btn btn-primary"
+            className="logbtn btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
         >
@@ -51,7 +56,7 @@ const Login = () => {
                 
                 <button
                     type="button"
-                    className="btn-close"
+                    className="btn-close btn-close-white"
                     data-bs-dismiss="modal"
                     aria-label="Close"
                 />

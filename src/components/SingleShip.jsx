@@ -1,5 +1,6 @@
 // Deps
 import { useContext, useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
 import ReactHowler from "react-howler"
 import roboteffect from '../assets/music/R2O2.mp3'
 import '../App.css'
@@ -10,11 +11,17 @@ import { StarshipsContext } from '../context/StarshipsContext'
 
 const SingleShip = () => {
     
-  const {urlShip, getShip, nau } = useContext(StarshipsContext)
- 
+  const {urlShip, getShip, nau, user } = useContext(StarshipsContext)
+
+  
   useEffect(() => {
     getShip(urlShip)   
   }, [])
+
+  
+  if(!user){
+    return <Navigate to='/Wellcome'/>
+ }
  
   let id;
   urlShip.length === 34 ? id = urlShip.slice(-2, -1) : id = urlShip.slice(-3, -1)
