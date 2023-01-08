@@ -15,8 +15,7 @@ export const StarshipsContextProvider = ( { children } ) => {
     const [nextPage, setNextPage] = useState(null);
     const [nau, setNau] = useState({});
     const [urlShip, setUrlShip] = useState("");
-
-
+    const [dataPilot, setDataPilot] = useState("");
 
     useEffect(() => {
         Axios.get('https://swapi.dev/api/starships/')
@@ -48,7 +47,6 @@ export const StarshipsContextProvider = ( { children } ) => {
         })
     }
 
-    
     const getShip = async (url) => {
         let peticion = await Axios.get(`${url}`)
         console.log(peticion.data)
@@ -56,6 +54,12 @@ export const StarshipsContextProvider = ( { children } ) => {
         setNau(peticion) 
     }
     
+    const getDataPilot = async (url) => {
+      let peticion = await Axios.get(`${url}`)
+      console.log(peticion.data)
+      peticion = peticion.data
+      setDataPilot(peticion) 
+  }
     
 
     return (
@@ -73,7 +77,9 @@ export const StarshipsContextProvider = ( { children } ) => {
             prevPage,
             nextPage,
             gotopage,
-            getShip
+            getShip,
+            getDataPilot,
+            dataPilot
         }}>
             {children}
         </StarshipsContext.Provider>

@@ -6,7 +6,7 @@ import '../styles/starships.css'
 // Context
 import { StarshipsContext } from '../context/StarshipsContext'
 
-const Starship_Item = ({ model, name, url }) => {
+const StarshipItem = ({ model, name, url }) => {
   const { setUrlShip } = useContext(StarshipsContext)
   
   return (
@@ -26,4 +26,4 @@ const Starship_Item = ({ model, name, url }) => {
 
 }
 
-export default Starship_Item
+export default StarshipItem
