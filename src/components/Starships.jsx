@@ -19,7 +19,7 @@ export const Starships = () => {
  
   return (
     <div className="row">
-      <ReactHowler src={imperialSong} playing={false} />
+      <ReactHowler src={imperialSong} playing={true} />
       <Pagination />
       {
         starships.map((item, index) => {

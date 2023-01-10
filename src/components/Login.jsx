@@ -1,95 +1,99 @@
-import loginlogos from '../assets/img/login-logos.jpg'
+import loginlogos from "../assets/img/login-logo.png";
 // Deps
-import { useContext } from 'react'
-import { useForm } from 'react-hook-form'
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
 // Context
-import { StarshipsContext } from '../context/StarshipsContext'
+import { StarshipsContext } from "../context/StarshipsContext";
 
 const Login = () => {
+  const { setUser } = useContext(StarshipsContext);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
-	const { setUser } = useContext(StarshipsContext)
-	const { register, formState:{errors}, handleSubmit } = useForm();
+  const loginUser = (data) => {
+    localStorage.setItem("user", JSON.stringify(data));
+    setUser(data);
+  };
 
-	const loginUser = (data) => {
-		// e.preventDefault();
-		// e.stopPropagation();
-		// console.log(e);
-		// console.log('Is prevent-able?', e.cancelable);
-		localStorage.setItem("user", JSON.stringify(data))
-		setUser(data)
-    closeModal()
-	}
-  
-  function closeModal(){
-    // const myModal = new bootstrap.Modal('#staticBackdrop')
-    //const myModal = bootstrap.Modal.getOrCreateInstance('#staticBackdrop')
-    const myModal = document.getElementById('staticBackdrop')
-    myModal.style.display = "none"
-    //myModal.hide();
-    // window.close()
-    }
+  return (
+    <>
+      <button
+        type="button"
+        className="logbtn btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
+        SIGN IN
+      </button>
 
-    return (
-        <>   
-        <button
-            type="button"
-            className="logbtn btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-        >
-            SIGN IN
-        </button>
-        {/* Modal */}
-        <div
-            className="modal fade"
-            id="staticBackdrop"
-            data-bs-backdrop="static"
-            data-bs-keyboard="false"
-            tabIndex={-1}
-            aria-labelledby="staticBackdropLabel"
-            aria-hidden="true"
-        >
-            <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content bg-dark">
-                <div className="modal-header">
-                <img className='logosInLogin w-75 mx-auto' src={loginlogos} alt="our logos" />
-                
-                <button
-                    type="button"
-                    className="btn-close btn-close-white"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                />
-                </div>
-                
-                <div className="modal-body w-75 mx-auto">
-							
-                    
-                    <h4 style={{ color: 'yellow' }} >ENTER YOUR EMAIL ADDRESS</h4>
-                </div>
-                <form onSubmit={handleSubmit(loginUser)} >
-                    <div className="w-75 mx-auto mb-3">
-                        <input type="text"
-												{...register('email',{
-													required: true,
-													pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
-													})} placeholder="Email Address" className="form-control" id="recipient-name" />
-                    </div>
-										{errors.email?.type === 'required' && <p className="w-75 mx-auto" style={{ color: 'red'}} >Required</p>}
-										{errors.email?.type === 'pattern' && <p className="w-75 mx-auto" style={{ color: 'red'}} >Please enter a valid email address.</p>}
-
-									<button
-										type="submit"
-										className="form-control btn btn-secondary w-75 mx-auto text-center mb-5">
-										Continue
-										</button>
-								</form>
-                
+      <div
+        className="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabIndex={-1}
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content bg-dark">
+            <div className="modal-header">
+              <img
+                className="logosInLogin w-75 mx-auto"
+                src={loginlogos}
+                alt="our logos"
+              />
+              <button
+                type="button"
+                className="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              />
             </div>
-           </div>
-        	</div>
-        </>
-  )
-}
+            <div className="modal-body w-75 mx-auto">
+              <h4 style={{ color: "yellow" }}>ENTER YOUR EMAIL ADDRESS</h4>
+            </div>
+            <form onSubmit={handleSubmit(loginUser)}>
+              <div className="w-75 mx-auto mb-3">
+                <input
+                  type="text"
+                  {...register("email", {
+                    required: true,
+                    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
+                  })}
+                  placeholder="Email Address"
+                  className="form-control"
+                  id="recipient-name"
+                />
+              </div>
+              {errors.email?.type === "required" && (
+                <p className="w-75 mx-auto" style={{ color: "red" }}>
+                  Required
+                </p>
+              )}
+              {errors.email?.type === "pattern" && (
+                <p className="w-75 mx-auto" style={{ color: "red" }}>
+                  Please enter a valid email address.
+                </p>
+              )}
+              <div className="w-75 mx-auto mb-3">
+                <button
+                  type="submit"
+                  data-bs-dismiss="modal"
+                  className="form-control btn btn-secondary text-center mb-5"
+                >
+                  Continue
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default Login
+export default Login;
