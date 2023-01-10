@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Wellcome = () => {
   return (
     <>
-      <ReactHowler src={themeStarWars} playing={true} />
+      <ReactHowler src={themeStarWars} playing={false} />
       <div
         id="carouselExampleCaptions"
         className="carousel slide"

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { StarshipsContext } from "../context/StarshipsContext";
 
 const Login = () => {
-  const { setUser } = useContext(StarshipsContext);
+  const { setUser, user } = useContext(StarshipsContext);
   const {
     register,
     formState: { errors },
@@ -14,7 +14,18 @@ const Login = () => {
   } = useForm();
 
   const loginUser = (data) => {
+    //1. Mirar si existe el mail en localstaorage
+    
+    //2. Si no existe pasar al siguiente Modal y guardar nombre, apellido y password y loged a true
+
+    //3. Si existe poner loged a true
+
+    //4. Si sale poner laged a false
+
+    console.log(data)
     localStorage.setItem("user", JSON.stringify(data));
+    const dataStorage = JSON.parse(localStorage.getItem(localStorage.key(0)))
+    console.log(dataStorage);
     setUser(data);
   };
 
