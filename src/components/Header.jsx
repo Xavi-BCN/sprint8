@@ -20,7 +20,7 @@ function Header() {
     <>
     <div className='container-fluid'>
       <img className='img-fluid mx-auto d-block' src={logo} alt="logo" style={{ maxWidth: '200px' }} />
-      { !user ? <Login /> :  <LoginOut />}
+      { user ? <Login /> :  <LoginOut />}
     </div>
     <Navbar/>
     </>

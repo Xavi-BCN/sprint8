@@ -1,67 +1,32 @@
 import loginlogos from "../assets/img/login-logo.png";
-import Register from "./Register";
-// Deps
-import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-// Context
-import { StarshipsContext } from "../context/StarshipsContext";
 
+const Register = () => {
 
-const Login = () => {
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+      } = useForm();
 
-  const [neededReg, setNeededReg] = useState()
-  const { setUser, user } = useContext(StarshipsContext);
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
-
-  const loginUser = (data) => {
-    //1. Mirar si existe el mail en localstorage
-    console.log(user)
-    setNeededReg(!(user.includes(data)))
-    // setUser(data)
-    console.log(neededReg)
-    
+    const registerUser = () => {
 
 
 
+    } 
 
-    //console.log(user.includes(data)) 
-    //include(data) ? alert('Existe usuario') :  alert('NO Existe usuario')
-
-    //2. Si no existe pasar al siguiente Modal y guardar nombre, apellido y password y loged a true
-
-    //3. Si existe poner loged a true
-
-    //4. Si sale poner laged a false
-
-    //console.log(data)
-    // localStorage.setItem("user", JSON.stringify(data));
-    // const dataStorage = JSON.parse(localStorage.getItem(localStorage.key(0)))
-    //console.log(dataStorage);
-    //setUser(data);
-  };
 
   return (
     <>
-      <button
-        type="button"
-        className="logbtn btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop"
-      >
-        SIGN IN
-      </button>
 
-      <div
+    <h1>HOLA ENTRARE EN REGISTRO</h1>
+   {/*  <div
         className="modal fade"
-        id="staticBackdrop"
+        id="register"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabIndex={-1}
-        aria-labelledby="staticBackdropLabel"
+        aria-labelledby="registerLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-centered">
@@ -82,7 +47,7 @@ const Login = () => {
             <div className="modal-body w-75 mx-auto">
               <h4 style={{ color: "yellow" }}>ENTER YOUR EMAIL ADDRESS</h4>
             </div>
-            <form onSubmit={handleSubmit(loginUser)}>
+            <form onSubmit={handleSubmit(registerUser)}>
               <div className="w-75 mx-auto mb-3">
                 <input
                   type="text"
@@ -114,13 +79,13 @@ const Login = () => {
                   Continue
                 </button>
               </div>
-              { neededReg && <h1>HOLA</h1> } 
             </form>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
-};
+  
+}
 
-export default Login;
+export default Register

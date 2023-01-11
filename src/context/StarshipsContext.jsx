@@ -5,8 +5,7 @@ import Axios from "axios";
 export const StarshipsContext = createContext();
 
 export const StarshipsContextProvider = ( { children } ) => {
-    const [user, setUser] = useState( JSON.parse(localStorage.getItem("user")) ?? []);
-    // useState( JSON.parse(localStorage.getItem("user")) ?? (null));
+    const [user, setUser] = useState( JSON.parse(localStorage.getItem("usuario")) ?? [{email: "", nombre:"", apellido:"", password:""}]);
     const [starships, setStarships] = useState([]);
     const [totalResults, setTotalResults] = useState(0);
     const [pages, setPages] = useState(0);
