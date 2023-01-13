@@ -6,7 +6,8 @@ import { Stack, Container, Form, Button } from "react-bootstrap";
 
 //Firebase
 import firebaseApp from "../credentials"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import SignIn from "./SignIn";
 const auth = getAuth(firebaseApp)
 
 // Context
@@ -16,6 +17,8 @@ const auth = getAuth(firebaseApp)
 const Login = () => {
 
   const [isregistering, setIsregistering] = useState(false)
+  const [ warningErr , setWarningErr] = useState("")
+
   // const { setUserGlobal, userGlobal } = useContext(StarshipsContext);
 
   async function submitHandler(e) {
@@ -23,7 +26,20 @@ const Login = () => {
     const mail = e.target.formBasicEmail.value;
     const pswd = e.target.formPswd.value;
     console.log(mail, pswd);
-
+    signInWithEmailAndPassword(auth, mail, pswd)
+      .then((res) => alert('Usuario Registrado'))
+      .catch(err => {
+        alert(err);
+        console.log(err)
+        
+        console.log(err.message);
+        
+        if(err.message === 'Firebase: Error (auth/user-not-found).'){
+          setWarningErr('user-not-found')
+          alert('Usuario no existe')  
+        }
+        
+      });
   };
 
   return (
@@ -86,6 +102,7 @@ const Login = () => {
                       className="form-control btn btn-secondary text-center mb-5">
                       Continue
                     </Button>
+                    {(warningErr === 'user-not-found') && <SignIn /> }
                   </div>
               </Form>
             </div>

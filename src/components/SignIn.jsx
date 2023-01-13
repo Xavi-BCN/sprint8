@@ -1,17 +1,20 @@
 import loginlogos from "../assets/img/login-logo.png";
 import { useContext, useState } from "react";
 import { Stack, Container, Form, Button } from "react-bootstrap";
+//Context
+import { StarshipsContext } from '../context/StarshipsContext'
 
 //Firebase
 import firebaseApp from "../credentials"
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 const auth = getAuth(firebaseApp)
 
 
 const SignIn = () => {
 
-  const [isregistering, setIsregistering] = useState(false)
-  // const { setUserGlobal, userGlobal } = useContext(StarshipsContext);
+  const [ isregistering, setIsregistering ] = useState(false)
+  const { setUserGlobal, userGlobal } = useContext(StarshipsContext);
+  const [ warningErrSign , setWarningErrSign] = useState("")
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -23,7 +26,22 @@ const SignIn = () => {
     // if(isregistering){
       //Si se registra
       const usuario = await createUserWithEmailAndPassword(auth, mail, pswd )
-      console.log(usuario);
+        .then((res) => alert(res))
+        .catch(err => {
+          alert(err);
+          console.log(err)
+          console.log(err.message);
+          
+          if(err.message === 'Firebase: Error (auth/email-already-in-use).'){
+            setWarningErrSign('already-in-use')
+            alert('Usuario esta uso')  
+          }else if(err.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).'){
+            setWarningErrSign('Password should be at least 6 characters')
+            alert('Password min 6 chars')  
+          }
+          
+        });
+        // console.log(usuario);
     // }else{
       // Se inicia sesion
       // signInWithEmailAndPassword(auth, mail, pswd)
