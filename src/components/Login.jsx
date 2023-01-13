@@ -1,25 +1,27 @@
 import loginlogos from "../assets/img/login-logo.png";
-import Register from "./Register";
+// Context
+import { StarshipsContext } from "../context/StarshipsContext";
+//Components
+import Messages from "./Messages";
+import SignIn from "./SignIn";
 // Deps
 import { useContext, useState } from "react";
 import { Stack, Container, Form, Button } from "react-bootstrap";
 
 //Firebase
+
 import firebaseApp from "../credentials"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
-import SignIn from "./SignIn";
 const auth = getAuth(firebaseApp)
 
-// Context
-// import { StarshipsContext } from "../context/StarshipsContext";
 
 
 const Login = () => {
 
-  const [isregistering, setIsregistering] = useState(false)
+  // const [isregistering, setIsregistering] = useState(false)
   const [ warningErr , setWarningErr] = useState("")
 
-  // const { setUserGlobal, userGlobal } = useContext(StarshipsContext);
+  const { setUserGlobal, userGlobal } = useContext(StarshipsContext);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -27,17 +29,16 @@ const Login = () => {
     const pswd = e.target.formPswd.value;
     console.log(mail, pswd);
     signInWithEmailAndPassword(auth, mail, pswd)
-      .then((res) => alert('Usuario Registrado'))
+      .then((res) => alert('Wellcome to StarWars'))
       .catch(err => {
-        alert(err);
-        console.log(err)
         
+        alert(`Sorry: ${err.message} Try again or SignIn`);
         console.log(err.message);
         
-        if(err.message === 'Firebase: Error (auth/user-not-found).'){
-          setWarningErr('user-not-found')
-          alert('Usuario no existe')  
-        }
+        // if(err.message === 'Firebase: Error (auth/user-not-found).'){
+          // setWarningErr(err.message)
+          // alert('Usuario no existe')  
+        // }
         
       });
   };
@@ -102,7 +103,7 @@ const Login = () => {
                       className="form-control btn btn-secondary text-center mb-5">
                       Continue
                     </Button>
-                    {(warningErr === 'user-not-found') && <SignIn /> }
+                    { warningErr && <Messages error={warningErr} /> }
                   </div>
               </Form>
             </div>

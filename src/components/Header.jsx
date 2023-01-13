@@ -23,15 +23,14 @@ function Header() {
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-4'>
-          <LogOut />
           </div>
           <div className='col-4'>
             <img className='img-fluid mx-auto d-block' src={logo} alt="logo" style={{ maxWidth: '300px' }} />
             
           </div>
           <div className='col-4'>
-          <Login /><SignIn />
-            {/* { userGlobal ? <LogOut /> : <Login />} */}
+          {/* <Login /><SignIn /> */}
+            { userGlobal ? <LogOut /> : <><Login /><SignIn /> </>}
           </div>
         </div>
       </div>

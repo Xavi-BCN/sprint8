@@ -23,7 +23,7 @@ const LogOut = () => {
         className="w-50"
         type="button"
         variant="dark"
-        >LOGOUT
+        >LOGOUT 
       </Button>
     </Container>
   )
