@@ -18,9 +18,17 @@ const Register = () => {
 
   return (
     <>
+    <button
+        type="button"
+        className="logbtn btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#register"
+      >
+        SIGN IN
+      </button>
 
-    <h1>HOLA ENTRARE EN REGISTRO</h1>
-   {/*  <div
+
+    <div
         className="modal fade"
         id="register"
         data-bs-backdrop="static"
@@ -45,44 +53,91 @@ const Register = () => {
               />
             </div>
             <div className="modal-body w-75 mx-auto">
-              <h4 style={{ color: "yellow" }}>ENTER YOUR EMAIL ADDRESS</h4>
+              <h4 style={{ color: "yellow" }}>CREATE YOUR ACCOUNT</h4>
+              <button className=" btn btn-dark "> Back </button>
+              <span style={{ color: "white" }}>mail de la persona</span>
             </div>
             <form onSubmit={handleSubmit(registerUser)}>
               <div className="w-75 mx-auto mb-3">
                 <input
                   type="text"
-                  {...register("email", {
+                  {...register("firstName", {
                     required: true,
-                    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
+                    pattern: /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/,
                   })}
-                  placeholder="Email Address"
+                  placeholder="First Name"
                   className="form-control"
-                  id="recipient-name"
+                  id="recipient-fname"
                 />
               </div>
-              {errors.email?.type === "required" && (
+              {errors.firstName?.type === "required" && (
                 <p className="w-75 mx-auto" style={{ color: "red" }}>
                   Required
                 </p>
               )}
-              {errors.email?.type === "pattern" && (
+              {errors.firstName?.type === "pattern" && (
                 <p className="w-75 mx-auto" style={{ color: "red" }}>
-                  Please enter a valid email address.
+                  Please enter a valid name.
                 </p>
               )}
+              <div className="w-75 mx-auto mb-3">
+                <input
+                  type="text"
+                  {...register("lastName", {
+                    required: true,
+                    pattern: /^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/,
+                  })}
+                  placeholder="Lasst Name"
+                  className="form-control"
+                  id="recipient-lname"
+                />
+              </div>
+              {errors.lastName?.type === "required" && (
+                <p className="w-75 mx-auto" style={{ color: "red" }}>
+                  Required
+                </p>
+              )}
+              {errors.lastName?.type === "pattern" && (
+                <p className="w-75 mx-auto" style={{ color: "red" }}>
+                  Please enter a valid name.
+                </p>
+              )}
+              <div className="w-75 mx-auto mb-3">
+                <input
+                  type="password"
+                  {...register("password", {
+                    required: true,
+                    pattern: /^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$/,
+                  })}
+                  placeholder="Password"
+                  className="form-control"
+                  id="recipient-fname"
+                />
+              </div>
+              {errors.password?.type === "required" && (
+                <p className="w-75 mx-auto" style={{ color: "red" }}>
+                  Required
+                </p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="w-75 mx-auto" style={{ color: "red" }}>
+                  Please enter a valid password.
+                </p>
+              )}
+              
               <div className="w-75 mx-auto mb-3">
                 <button
                   type="submit"
                   data-bs-dismiss="modal"
                   className="form-control btn btn-secondary text-center mb-5"
                 >
-                  Continue
+                  Create Account
                 </button>
               </div>
             </form>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
   

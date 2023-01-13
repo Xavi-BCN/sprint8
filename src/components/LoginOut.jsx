@@ -7,11 +7,11 @@ import { Navigate } from 'react-router-dom'
 import { StarshipsContext } from '../context/StarshipsContext'
 
 const LogOut = () => {
-  const { setUser, user } = useContext(StarshipsContext)
+  const { setUserGlobal, userGlobal } = useContext(StarshipsContext)
   const logoutUser = () => {
-      localStorage.removeItem("user");
-      setUser(null);
-      return <Navigate to='/Wellcome'/>
+      // localStorage.removeItem("user");
+      setUserGlobal(null);
+      // return <Navigate to='/Wellcome'/>
   }
   return (
     <>

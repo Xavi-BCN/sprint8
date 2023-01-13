@@ -1,27 +1,44 @@
 // Deps
-import React from 'react'
+
+import Wellcome from '../pages/Wellcome'
 import '../styles/header.css'
 import logo from '../assets/img/Star_Wars_logo_black.svg'
 
-
 // Components
 import { Navbar } from './Navbar'
+
 // Deps
-import { useContext } from 'react'
+// import { useContext } from 'react'
+// import { Navigate } from 'react-router-dom'
 // Components
 import Login from './Login'
-import LoginOut from './LoginOut'
+import SignIn from './SignIn'
+
 // Context
-import { StarshipsContext } from '../context/StarshipsContext'
+// import { StarshipsContext } from '../context/StarshipsContext'
+
+
+
 
 function Header() {
-  const { user } = useContext(StarshipsContext)
+  // const { userGlobal, setUserGlobal } = useContext(StarshipsContext)
+
   return (
     <>
-    <div className='container-fluid'>
-      <img className='img-fluid mx-auto d-block' src={logo} alt="logo" style={{ maxWidth: '200px' }} />
-      { user ? <Login /> :  <LoginOut />}
-    </div>
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-4'>
+          </div>
+          <div className='col-4'>
+            <img className='img-fluid mx-auto d-block' src={logo} alt="logo" style={{ maxWidth: '300px' }} />
+            
+          </div>
+          <div className='col-4'>
+            <Login /><SignIn />
+            {/* { userGlobal ? <Login /> : <SignIn />} */}
+          </div>
+        </div>
+      </div>
     <Navbar/>
     </>
   )

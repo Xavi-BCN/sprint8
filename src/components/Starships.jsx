@@ -11,10 +11,10 @@ import { Pagination } from './Pagination'
 import  StarshipItem  from './StarshipItem'
 
 export const Starships = () => {
-  const { starships, user } = useContext(StarshipsContext)
+  const { starships, userGlobal } = useContext(StarshipsContext)
 
-  if(!user){
-    return <Navigate to='/Wellcome'/>
+  if(!userGlobal){
+     return <Navigate to='/Wellcome'/>
   }
  
   return (

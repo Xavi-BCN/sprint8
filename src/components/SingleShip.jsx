@@ -8,7 +8,7 @@ import { StarshipsContext } from '../context/StarshipsContext'
 
 const SingleShip = () => {
 
-  const { urlShip, getShip, nau, user } = useContext(StarshipsContext)
+  const { urlShip, getShip, nau, userGlobal } = useContext(StarshipsContext)
 
 
   useEffect(() => {
@@ -16,8 +16,8 @@ const SingleShip = () => {
   }, [])
 
 
-  if (!user) {
-    return <Navigate to='/Wellcome' />
+  if (!userGlobal) {
+    // return <Navigate to='/Wellcome' />
   }
 
   let id;

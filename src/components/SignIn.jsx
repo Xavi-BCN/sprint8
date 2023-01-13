@@ -1,30 +1,35 @@
 import loginlogos from "../assets/img/login-logo.png";
-import Register from "./Register";
-// Deps
 import { useContext, useState } from "react";
 import { Stack, Container, Form, Button } from "react-bootstrap";
 
 //Firebase
 import firebaseApp from "../credentials"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 const auth = getAuth(firebaseApp)
 
-// Context
-// import { StarshipsContext } from "../context/StarshipsContext";
 
-
-const Login = () => {
+const SignIn = () => {
 
   const [isregistering, setIsregistering] = useState(false)
   // const { setUserGlobal, userGlobal } = useContext(StarshipsContext);
 
   async function submitHandler(e) {
     e.preventDefault();
-    const mail = e.target.formBasicEmail.value;
+    const mail = e.target.formEmail.value;
+    const fname = e.target.formFname.value;
+    const lname = e.target.formLname.value;
     const pswd = e.target.formPswd.value;
-    console.log(mail, pswd);
-
+    console.log(mail, fname, lname, pswd);
+    // if(isregistering){
+      //Si se registra
+      const usuario = await createUserWithEmailAndPassword(auth, mail, pswd )
+      console.log(usuario);
+    // }else{
+      // Se inicia sesion
+      // signInWithEmailAndPassword(auth, mail, pswd)
+    // }
   };
+
 
   return (
     <Container>
@@ -34,17 +39,19 @@ const Login = () => {
           type="button"
           variant="dark"
           data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-        >LOGIN
+          data-bs-target="#register"
+        >
+          SIGN IN
         </Button>
+
 
         <div
           className="modal fade"
-          id="staticBackdrop"
+          id="register"
           data-bs-backdrop="static"
           data-bs-keyboard="false"
           tabIndex={-1}
-          aria-labelledby="staticBackdropLabel"
+          aria-labelledby="registerLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-dialog-centered">
@@ -63,37 +70,51 @@ const Login = () => {
                 />
               </div>
               <div className="modal-body w-75 mx-auto">
-                <h4 style={{ color: "yellow" }}>ENTER YOUR EMAIL ADDRESS</h4>
+                <h4 style={{ color: "yellow" }}>CREATE YOUR ACCOUNT</h4>
+                <button className=" btn btn-dark "> Back </button>
+                <span style={{ color: "white" }}>mail de la persona</span>
               </div>
-              <Form onSubmit={submitHandler}>
-                <Form.Group controlId="formBasicEmail">
+              <form onSubmit={submitHandler}>
+                <Form.Group controlId="formEmail">
                   <div className="w-75 mx-auto mb-3">
                     <Form.Control type="email" placeholder="Email Address" />
                   </div>
                 </Form.Group>
-                
+                <Form.Group controlId="formFname">
+                  <div className="w-75 mx-auto mb-3">
+                    <Form.Control type="text" placeholder="First Name" />
+                  </div>
+                </Form.Group>
+                <Form.Group controlId="formLname">
+                  <div className="w-75 mx-auto mb-3">
+                    <Form.Control type="text" placeholder="Last Name" />
+                  </div>
+                </Form.Group>
                 <Form.Group controlId="formPswd">
                   <div className="w-75 mx-auto mb-3">
                     <Form.Control type="password" placeholder="Password" />
                   </div>
                 </Form.Group>
-                
-                
-                  <div className="w-75 mx-auto mb-3">
-                    <Button
-                      type="submit"
-                      data-bs-dismiss="modal"
-                      className="form-control btn btn-secondary text-center mb-5">
-                      Continue
-                    </Button>
-                  </div>
-              </Form>
+
+
+                <div className="w-75 mx-auto mb-3">
+                  <Button
+                    type="submit"
+                    data-bs-dismiss="modal"
+                    className="form-control btn btn-secondary text-center mb-5"
+                  >
+                    Create Account
+                  </Button>
+                </div>
+
+              </form>
             </div>
           </div>
         </div>
       </Stack>
     </Container>
   );
-};
 
-export default Login;
+}
+
+export default SignIn
