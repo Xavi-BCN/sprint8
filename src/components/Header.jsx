@@ -4,13 +4,12 @@ import '../styles/header.css'
 import logo from '../assets/img/Star_Wars_logo_black.svg'
 // Deps
 import { useContext } from 'react'
-// import { Navigate } from 'react-router-dom'
+
 // Components
 import { Navbar } from './Navbar'
 import LogOut from './LogOut'
 import Login from './Login'
 import SignIn from './SignIn'
-import Wellcome from '../pages/Wellcome'
 
 // Context
 import { StarshipsContext } from '../context/StarshipsContext'

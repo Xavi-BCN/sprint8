@@ -1,4 +1,5 @@
 import loginlogos from "../assets/img/login-logo.png";
+import '../styles/Login.css'
 // Context
 import { StarshipsContext } from "../context/StarshipsContext";
 //Components
@@ -45,9 +46,9 @@ const Login = () => {
 
   return (
     <Container>
-      <Stack gap={3}>
+      <Stack >
         <Button
-          className="w-50"
+          className="btnlogin"
           type="button"
           variant="dark"
           data-bs-toggle="modal"
@@ -85,13 +86,13 @@ const Login = () => {
               <Form onSubmit={submitHandler}>
                 <Form.Group controlId="formBasicEmail">
                   <div className="w-75 mx-auto mb-3">
-                    <Form.Control type="email" placeholder="Email Address" />
+                    <Form.Control required type="email" placeholder="Email Address" />
                   </div>
                 </Form.Group>
                 
                 <Form.Group controlId="formPswd">
                   <div className="w-75 mx-auto mb-3">
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control required type="password" placeholder="Password" />
                   </div>
                 </Form.Group>
                 

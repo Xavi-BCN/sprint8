@@ -9,6 +9,7 @@ import { StarshipsContext } from '../context/StarshipsContext'
 // Compnent
 import { Pagination } from './Pagination'
 import  StarshipItem  from './StarshipItem'
+import Loading from './Loading'
 
 export const Starships = () => {
   const { starships, userGlobal } = useContext(StarshipsContext)

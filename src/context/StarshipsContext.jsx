@@ -63,6 +63,7 @@ export const StarshipsContextProvider = ( { children } ) => {
     
 
     return (
+        
         <StarshipsContext.Provider value={{
             userGlobal,
             setUserGlobal,

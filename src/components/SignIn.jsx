@@ -1,6 +1,6 @@
 import loginlogos from "../assets/img/login-logo.png";
-// import { useContext, useState } from "react";
-import { Stack, Container, Form, Button } from "react-bootstrap";
+import { useContext, useState } from "react";
+import { Stack, Container, Form, Button, Alert } from "react-bootstrap";
 //Context
 // import { StarshipsContext } from '../context/StarshipsContext'
 
@@ -12,7 +12,7 @@ const auth = getAuth(firebaseApp)
 
 const SignIn = () => {
 
- // const [ isregistering, setIsregistering ] = useState(false)
+  const [ isempty, setIsempty ] = useState(false)
   // const { setUserGlobal, userGlobal } = useContext(StarshipsContext);
   // const [ warningErrSign , setWarningErrSign] = useState("")
 
@@ -23,6 +23,11 @@ const SignIn = () => {
     const lname = e.target.formLname.value;
     const pswd = e.target.formPswd.value;
     console.log(mail, fname, lname, pswd);
+
+    if(!mail || !pswd){
+      alert('hhhhhh')
+      setIsempty(true)
+    }
     
        await createUserWithEmailAndPassword(auth, mail, pswd )
         .then((res) => console.log(res))
@@ -81,28 +86,26 @@ const SignIn = () => {
               </div>
               <div className="modal-body w-75 mx-auto">
                 <h4 style={{ color: "yellow" }}>CREATE YOUR ACCOUNT</h4>
-                <button className=" btn btn-dark "> Back </button>
-                <span style={{ color: "white" }}>mail de la persona</span>
               </div>
               <form onSubmit={submitHandler}>
                 <Form.Group controlId="formEmail">
                   <div className="w-75 mx-auto mb-3">
-                    <Form.Control type="email" placeholder="Email Address" />
+                    <Form.Control required type="email" placeholder="Email Address" />
                   </div>
                 </Form.Group>
                 <Form.Group controlId="formFname">
                   <div className="w-75 mx-auto mb-3">
-                    <Form.Control type="text" placeholder="First Name" />
+                    <Form.Control type="text" placeholder="First Name (optional)" />
                   </div>
                 </Form.Group>
                 <Form.Group controlId="formLname">
                   <div className="w-75 mx-auto mb-3">
-                    <Form.Control type="text" placeholder="Last Name" />
+                    <Form.Control type="text" placeholder="Last Name (optional)" />
                   </div>
                 </Form.Group>
                 <Form.Group controlId="formPswd">
                   <div className="w-75 mx-auto mb-3">
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control required type="password" placeholder="Password" />
                   </div>
                 </Form.Group>
 
@@ -110,12 +113,16 @@ const SignIn = () => {
                 <div className="w-75 mx-auto mb-3">
                   <Button
                     type="submit"
-                    data-bs-dismiss="modal"
                     className="form-control btn btn-secondary text-center mb-5"
+                    data-bs-dismiss="modal"
                   >
                     Create Account
                   </Button>
                 </div>
+                {isempty && 
+                (<Alert color="primary" variant="danger">
+                Please Fill Every Field</Alert>)
+                }
 
               </form>
             </div>
