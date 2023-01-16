@@ -45,8 +45,8 @@ const Login = () => {
   };
 
   return (
-    <Container>
-      <Stack >
+    <>
+      
         <Button
           className="btnlogin"
           type="button"
@@ -110,8 +110,8 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </Stack>
-    </Container>
+      
+    </>
   );
 };
 

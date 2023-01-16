@@ -1,4 +1,5 @@
 import loginlogos from "../assets/img/login-logo.png";
+import '../styles/SignIn.css'
 import { useContext, useState } from "react";
 import { Stack, Container, Form, Button, Alert } from "react-bootstrap";
 //Context
@@ -47,10 +48,10 @@ const SignIn = () => {
 
 
   return (
-    <Container>
+    <>
       <Stack gap={3}>
         <Button
-          className="w-50"
+          className="btnSignIn w-25"
           type="button"
           variant="dark"
           data-bs-toggle="modal"
@@ -129,7 +130,7 @@ const SignIn = () => {
           </div>
         </div>
       </Stack>
-    </Container>
+    </>
   );
 
 }
