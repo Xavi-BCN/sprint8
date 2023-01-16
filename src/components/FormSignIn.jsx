@@ -11,7 +11,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 const auth = getAuth(firebaseApp)
 
 
-const SignIn = () => {
+const FormSignIn = () => {
 
   const [ isempty, setIsempty ] = useState(false)
   // const { setUserGlobal, userGlobal } = useContext(StarshipsContext);
@@ -33,7 +33,8 @@ const SignIn = () => {
        await createUserWithEmailAndPassword(auth, mail, pswd )
         .then((res) => console.log(res))
         .catch(err => {
-          alert(err.message);
+          
+          alert(err.message)
 
           
           /* if(err.message === 'Firebase: Error (auth/email-already-in-use).'){
@@ -135,4 +136,4 @@ const SignIn = () => {
 
 }
 
-export default SignIn
+export default FormSignIn

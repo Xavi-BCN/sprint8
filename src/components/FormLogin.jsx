@@ -3,26 +3,27 @@ import '../styles/Login.css'
 // Context
 import { StarshipsContext } from "../context/StarshipsContext";
 //Components
-import Messages from "./Messages";
-import SignIn from "./SignIn";
+import MessagesErr from "./MessagesErr";
+// import FormSignIn from "./FormSignIn";
 // Deps
 import { useContext, useState } from "react";
-import { Stack, Container, Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 
 //Firebase
 
 import firebaseApp from "../credentials"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import MessageOk from "./MessageOk";
 const auth = getAuth(firebaseApp)
 
 
 
-const Login = () => {
+const FormLogin = () => {
 
-  // const [isregistering, setIsregistering] = useState(false)
+  
   const [ warningErr , setWarningErr] = useState("")
 
-  const { setUserGlobal, userGlobal } = useContext(StarshipsContext);
+  // const { setUserGlobal, userGlobal } = useContext(StarshipsContext);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -31,16 +32,7 @@ const Login = () => {
     console.log(mail, pswd);
     signInWithEmailAndPassword(auth, mail, pswd)
       .then((res) => alert('Wellcome to StarWars'))
-      .catch(err => {
-        
-        alert(`Sorry: ${err.message} Try again or SignIn`);
-        console.log(err.message);
-        
-        // if(err.message === 'Firebase: Error (auth/user-not-found).'){
-          // setWarningErr(err.message)
-          // alert('Usuario no existe')  
-        // }
-        
+      .catch(err => {setWarningErr(err.message)
       });
   };
 
@@ -100,11 +92,11 @@ const Login = () => {
                   <div className="w-75 mx-auto mb-3">
                     <Button
                       type="submit"
-                      data-bs-dismiss="modal"
+                      // data-bs-dismiss="modal"
                       className="form-control btn btn-secondary text-center mb-5">
                       Continue
                     </Button>
-                    { warningErr && <Messages error={warningErr} /> }
+                        { warningErr && <MessagesErr error={warningErr} />}
                   </div>
               </Form>
             </div>
@@ -115,4 +107,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default FormLogin;

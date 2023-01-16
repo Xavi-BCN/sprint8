@@ -8,11 +8,12 @@ import { useContext } from 'react'
 // Components
 import { Navbar } from './Navbar'
 import LogOut from './LogOut'
-import Login from './Login'
-import SignIn from './SignIn'
+import FormLogin from './FormLogin'
+import FormSignIn from './FormSignIn'
 
 // Context
 import { StarshipsContext } from '../context/StarshipsContext'
+import MessageOk from './MessageOk'
 
 function Header() {
   const { userGlobal } = useContext(StarshipsContext)
@@ -25,11 +26,9 @@ function Header() {
           </div>
           <div className='col-4'>
             <img className='img-fluid mx-auto d-block' src={logo} alt="logo" style={{ maxWidth: '300px' }} />
-            
           </div>
           <div className='col-4'>
-          {/* <Login /><SignIn /> */}
-            { userGlobal ? <LogOut /> : <><Login /><SignIn /> </>}
+            { userGlobal ? <LogOut /> : <><FormLogin /><FormSignIn /> </>}
           </div>
         </div>
       </div>
